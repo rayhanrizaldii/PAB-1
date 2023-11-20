@@ -1,6 +1,6 @@
+import 'package:aktivitas/bottomnavigation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'SecondPage.dart';
 
 class FirstPage extends StatelessWidget {
   const FirstPage({super.key});
@@ -90,9 +90,10 @@ class FirstPage extends StatelessWidget {
               child: Center(
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(
+                    Navigator.pushReplacement(
                       context,
-                      CupertinoPageRoute(builder: (context) => SecondPage()),
+                      CupertinoPageRoute(
+                          builder: (context) => bottomnavigationbar()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
