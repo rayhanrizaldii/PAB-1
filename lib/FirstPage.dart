@@ -1,8 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:praktikum/RegisterPage.dart';
 import 'package:praktikum/bottomnavigation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class FirstPage extends StatelessWidget {
+class FirstPage extends StatefulWidget {
   const FirstPage({super.key});
+
+  @override
+  State<FirstPage> createState() => _FirstPageState();
+}
+
+class _FirstPageState extends State<FirstPage> {
+  String? nama;
+  String? nbi;
+  String? kelas;
+
+  void data() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    final String? _nama = prefs.getString('nama');
+    final String? _nbi = prefs.getString('nbi');
+    final String? _kelas = prefs.getString('kelas');
+
+    setState(() {
+      nama = _nama;
+      nbi = _nbi;
+      kelas = _kelas;
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    data();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,9 +75,9 @@ class FirstPage extends StatelessWidget {
             ),
             Container(
               margin: const EdgeInsets.only(top: 50),
-              child: const Center(
+              child: Center(
                 child: Text(
-                  "1462100047",
+                  '$nbi',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: 30,
@@ -73,9 +105,9 @@ class FirstPage extends StatelessWidget {
             ),
             Container(
               margin: const EdgeInsets.only(top: 20),
-              child: const Center(
+              child: Center(
                 child: Text(
-                  "Rayhan Rizaldi",
+                  "$nama",
                   style: TextStyle(
                       fontSize: 30,
                       color: Colors.white,
@@ -87,33 +119,88 @@ class FirstPage extends StatelessWidget {
             Container(
               margin: const EdgeInsets.only(top: 20),
               child: Center(
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => bottomnavigationbar()),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    backgroundColor: Colors.green,
-                    padding: const EdgeInsets.fromLTRB(50, 20, 50, 20),
-                  ),
-                  child: const Text(
-                    'Login',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
+                child: Text(
+                  "$kelas",
+                  style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.white,
                       fontWeight: FontWeight.bold,
-                      letterSpacing: 2.5,
+                      letterSpacing: 1.5),
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 20),
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => bottomnavigationbar()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  backgroundColor: Colors.green,
+                ),
+                child: Container(
+                  width: 200,
+                  height: 50,
+                  child: Center(
+                    child: const Text(
+                      'Login',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 2.5,
+                      ),
                     ),
                   ),
                 ),
               ),
-            )
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 20),
+              child: ElevatedButton(
+                onPressed: () async {
+                  final SharedPreferences prefs =
+                      await SharedPreferences.getInstance();
+
+                  await prefs.remove('nama');
+                  await prefs.remove('nbi');
+                  await prefs.remove('kelas');
+
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) {
+                    return RegisterPage();
+                  }));
+                },
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  backgroundColor: Color.fromARGB(255, 211, 60, 60),
+                ),
+                child: Container(
+                  width: 200,
+                  height: 50,
+                  child: Center(
+                    child: const Text(
+                      'Keluar',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 2.5,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
