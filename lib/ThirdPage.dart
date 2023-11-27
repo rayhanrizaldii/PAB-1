@@ -1,5 +1,5 @@
-import 'package:aktivitas/widget/listMovieWidget.dart';
 import 'package:flutter/material.dart';
+import 'package:praktikum/widget/listMovieWidget.dart';
 
 class ThirdPage extends StatefulWidget {
   @override
@@ -23,6 +23,16 @@ class _ThirdPageState extends State<ThirdPage> {
     },
     {"img": "assets/images/profile2.png", "desc": "Ini Film Tentang Perempuan"},
     {"img": "assets/images/profile3.png", "desc": "Ini Film Terbaik Tahun Ini"},
+    {
+      "img": "assets/images/profile4.png",
+      "desc": "Ini Film Terbaik Tahun Lalu"
+    },
+    {
+      "img": "assets/images/profile5.png",
+      "desc": "Ini Film Terbaik Tahun Depan"
+    },
+    {"img": "assets/images/profile6.png", "desc": "Ini Film Terbaik Tahun Ini"},
+    {"img": "assets/images/profile1.png", "desc": "Ini Film Terbaik Tahun Ini"},
   ];
 
   @override
@@ -37,7 +47,7 @@ class _ThirdPageState extends State<ThirdPage> {
               children: [
                 SizedBox(
                   width: 400,
-                  height: 650,
+                  height: 550,
                   child: ListView.builder(
                     itemCount: movie.length,
                     itemBuilder: (context, index) {

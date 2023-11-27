@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:aktivitas/SecondPage.dart';
-import 'package:aktivitas/ThirdPage.dart';
+import 'SecondPage.dart';
+import 'ThirdPage.dart';
+import 'FourthPage.dart';
 
 class bottomnavigationbar extends StatefulWidget {
   final int initialIndex;
@@ -15,7 +16,7 @@ class bottomnavigationbar extends StatefulWidget {
 class _bottomnavigationbarState extends State<bottomnavigationbar> {
   int _selectedIndex = 0;
 
-  List<Widget> _screenList = [SecondPage(), ThirdPage()];
+  List<Widget> _screenList = [SecondPage(), ThirdPage(), FourthPage()];
 
   void onItemTapped(int index) {
     setState(() {
@@ -37,7 +38,7 @@ class _bottomnavigationbarState extends State<bottomnavigationbar> {
         backgroundColor: Colors.black,
         currentIndex: _selectedIndex,
         onTap: onItemTapped,
-        selectedItemColor: Colors.blueGrey,
+        selectedItemColor: Colors.red,
         unselectedItemColor: Colors.white,
         selectedFontSize: 15,
         unselectedFontSize: 15,
@@ -55,6 +56,11 @@ class _bottomnavigationbarState extends State<bottomnavigationbar> {
             tooltip: 'Movies',
             label: 'Movies',
             icon: Icon(Icons.local_movies_outlined, color: Colors.white),
+          ),
+          BottomNavigationBarItem(
+            tooltip: 'Profile',
+            label: 'Profile',
+            icon: Icon(Icons.person, color: Colors.white),
           ),
         ],
       ),

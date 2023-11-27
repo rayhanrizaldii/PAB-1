@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'FirstPage.dart';
+import 'package:praktikum/FirstPage.dart';
 
 void main() {
   runApp(const MaterialApp(

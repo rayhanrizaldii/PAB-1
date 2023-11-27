@@ -1,6 +1,5 @@
-import 'package:aktivitas/bottomnavigation.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:praktikum/bottomnavigation.dart';
 
 class FirstPage extends StatelessWidget {
   const FirstPage({super.key});
@@ -86,13 +85,13 @@ class FirstPage extends StatelessWidget {
               ),
             ),
             Container(
-              margin: const EdgeInsets.only(top: 50),
+              margin: const EdgeInsets.only(top: 20),
               child: Center(
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.pushReplacement(
                       context,
-                      CupertinoPageRoute(
+                      MaterialPageRoute(
                           builder: (context) => bottomnavigationbar()),
                     );
                   },

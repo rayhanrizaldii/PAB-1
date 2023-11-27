@@ -6,7 +6,7 @@ Center listMovies(togglePlay, isPlaying, {required img, required desc}) {
       padding: const EdgeInsets.only(top: 20, bottom: 20),
       child: Container(
         width: 350,
-        height: 600,
+        height: 650,
         decoration: BoxDecoration(
             color: Colors.blueGrey, borderRadius: BorderRadius.circular(20)),
         child: Padding(
@@ -31,7 +31,7 @@ Center listMovies(togglePlay, isPlaying, {required img, required desc}) {
                 height: 20,
               ),
               Padding(
-                padding: EdgeInsets.only(left: 35, right: 35),
+                padding: EdgeInsets.only(top: 35, left: 35, right: 35),
                 child: ElevatedButton(
                   onPressed: togglePlay,
                   style: ElevatedButton.styleFrom(
