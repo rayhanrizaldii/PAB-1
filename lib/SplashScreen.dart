@@ -15,7 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Future.delayed(Duration(seconds: 3), () async {
+    Future.delayed(Duration(milliseconds: 3750), () async {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
 
       final String? nbi = prefs.getString('nbi');
@@ -51,8 +51,10 @@ class _SplashScreenState extends State<SplashScreen> {
         color: Colors.black,
         child: Center(
           child: Image.asset(
-            'assets/images/netflix.png',
-            scale: 2,
+            'assets/images/netflix-intro-gif.gif',
+            width: 500,
+            height: 800,
+            fit: BoxFit.cover,
           ),
         ),
       ),
