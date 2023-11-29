@@ -47,7 +47,7 @@ class _ThirdPageState extends State<ThirdPage> {
               children: [
                 SizedBox(
                   width: 400,
-                  height: 550,
+                  height: 700,
                   child: ListView.builder(
                     itemCount: movie.length,
                     itemBuilder: (context, index) {
