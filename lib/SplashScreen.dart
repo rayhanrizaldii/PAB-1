@@ -15,7 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Future.delayed(Duration(milliseconds: 3750), () async {
+    Future.delayed(Duration(milliseconds: 2000), () async {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
 
       final String? nbi = prefs.getString('nbi');
@@ -48,13 +48,35 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: Colors.black,
-        child: Center(
-          child: Image.asset(
-            'assets/images/netflix-intro-gif.gif',
-            width: 500,
-            height: 800,
-            fit: BoxFit.cover,
+        color: Color(0xfffa50d0d),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/images/world.png',
+                width: 500,
+                fit: BoxFit.contain,
+              ),
+              Image.asset(
+                'assets/images/splashscreen.png',
+                width: 200,
+                height: 200,
+                fit: BoxFit.cover,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                'Praktikum PAB 2023',
+                style: TextStyle(color: Colors.white, fontSize: 30),
+              ),
+              Image.asset(
+                'assets/images/world1.png',
+                width: 500,
+                fit: BoxFit.contain,
+              ),
+            ],
           ),
         ),
       ),
