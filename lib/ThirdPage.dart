@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:praktikum/api/apiController.dart';
 import 'package:praktikum/widget/listMovieWidget.dart';
 
 class ThirdPage extends StatefulWidget {
@@ -13,6 +14,15 @@ class _ThirdPageState extends State<ThirdPage> {
     setState(() {
       isPlaying = !isPlaying;
     });
+  }
+
+  Future<List<dynamic>>? _data;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _data = apiController().getdatas();
   }
 
   List movie = [
@@ -43,20 +53,33 @@ class _ThirdPageState extends State<ThirdPage> {
         body: Center(
           child: Padding(
             padding: EdgeInsets.only(top: 10),
-            child: Column(
-              children: [
-                SizedBox(
-                  width: 400,
-                  height: 700,
-                  child: ListView.builder(
-                    itemCount: movie.length,
-                    itemBuilder: (context, index) {
-                      return listMovies(togglePlay, isPlaying,
-                          img: movie[index]["img"], desc: movie[index]["desc"]);
-                    },
-                  ),
-                ),
-              ],
+            child: FutureBuilder<List<dynamic>>(
+              future: _data,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  print('Ini Data ${snapshot.data}');
+                  return Container(
+                    width: 400,
+                    height: 670,
+                    child: ListView.builder(
+                      itemCount: snapshot.data!.length,
+                      itemBuilder: (context, index) {
+                        return listMovies(togglePlay, isPlaying,
+                            img:
+                                'https://saiyaapi.site/${snapshot.data![index]['photo']}',
+                            desc: snapshot.data![index]['desc']);
+                      },
+                    ),
+                  );
+                } else {
+                  print(snapshot.error);
+                  return Center(
+                    child: CircularProgressIndicator(
+                      color: Colors.white,
+                    ),
+                  );
+                }
+              },
             ),
           ),
         ),

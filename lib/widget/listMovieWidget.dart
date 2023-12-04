@@ -21,7 +21,7 @@ Center listMovies(togglePlay, isPlaying, {required img, required desc}) {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
                     image: DecorationImage(
-                      image: AssetImage(img),
+                      image: NetworkImage(img),
                       fit: BoxFit.cover,
                     ),
                   ),
