@@ -57,7 +57,7 @@ class _ThirdPageState extends State<ThirdPage> {
               future: _data,
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
-                  print('Ini Data ${snapshot.data}');
+                  // print('Ini Data ${snapshot.data}');
                   return Container(
                     width: 400,
                     height: 670,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:praktikum/RegisterPage.dart';
 import 'package:praktikum/bottomnavigation.dart';
+import 'PinPage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class FirstPage extends StatefulWidget {
@@ -136,8 +137,7 @@ class _FirstPageState extends State<FirstPage> {
                   onPressed: () {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => bottomnavigationbar()),
+                      MaterialPageRoute(builder: (context) => PinPage()),
                     );
                   },
                   style: ElevatedButton.styleFrom(

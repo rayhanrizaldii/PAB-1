@@ -24,4 +24,49 @@ class apiController {
 
   //   return datas;
   // }
+
+// Fetching API with Pin Parameter
+//   Future<String> getPinFromApi() async {
+//     String apiUrl =
+//         'https://example.com/api/pin'; // Ganti dengan URL API yang sesuai
+
+//     try {
+//       final response = await Dio().get(apiUrl);
+//       if (response.statusCode == 200) {
+//         // Respons sukses, mengembalikan PIN dari API
+//         return response.data.toString();
+//       } else {
+//         // Respons gagal, tampilkan pesan atau kembalikan nilai default
+//         print('Gagal mendapatkan PIN dari API');
+//         return ''; // Kembalikan nilai default yang sesuai dengan kebutuhan Anda
+//       }
+//     } catch (e) {
+//       // Terjadi kesalahan saat menghubungi API, tampilkan pesan atau kembalikan nilai default
+//       print('Terjadi kesalahan: $e');
+//       return ''; // Kembalikan nilai default yang sesuai dengan kebutuhan Anda
+//     }
+//   }
+// Future<bool> verifyPin(String userInputPin) async {
+//   String apiUrl = 'https://example.com/api/pin'; // Ganti dengan URL API yang sesuai
+
+//   try {
+//     final response = await Dio().get(apiUrl);
+//     if (response.statusCode == 200) {
+//       List<dynamic> pinData = response.data['payload'];
+//       for (var entry in pinData) {
+//         String pinFromApi = entry['pin'];
+//         if (userInputPin == pinFromApi) {
+//           // Pin yang dimasukkan oleh pengguna valid
+//           return true;
+//         }
+//       }
+//     }
+//   } catch (e) {
+//     print('Terjadi kesalahan: $e');
+//     // Handle error jika terjadi kesalahan saat menghubungi API
+//   }
+
+//   // Pin yang dimasukkan oleh pengguna tidak valid
+//   return false;
+// }
 }

@@ -1,15 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:praktikum/bottomnavigation.dart';
 import 'package:remixicon/remixicon.dart';
 
 class PinPage extends StatefulWidget {
-  const PinPage({super.key});
+  const PinPage({Key? key});
 
   @override
-  State<PinPage> createState() => _PinPageState();
+  _PinPageState createState() => _PinPageState();
 }
 
 class _PinPageState extends State<PinPage> {
   bool _obscureText = true;
+  TextEditingController _pinController = TextEditingController();
+  String _errorMessage = '';
+
+  Future<void> _validatePin() async {
+    String pin = _pinController.text;
+
+    // Contoh validasi PIN dengan PIN yang ada di API
+    String apiPin = '1234'; // Ganti dengan PIN yang diperoleh dari API
+
+    if (pin == '') {
+      _errorMessage = 'Masukkan Pin Anda';
+    } else if (pin == apiPin) {
+      // PIN benar, lakukan aksi yang diinginkan
+      await Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (BuildContext build) {
+            return bottomnavigationbar();
+          },
+        ),
+      );
+    } else {
+      // PIN salah, tampilkan pesan kesalahan
+      _errorMessage = 'PIN salah. Silakan coba lagi.';
+    }
+
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +47,7 @@ class _PinPageState extends State<PinPage> {
       body: Center(
         child: Container(
           width: 250,
-          height: 300,
+          height: 400,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -55,19 +84,18 @@ class _PinPageState extends State<PinPage> {
                 height: 20,
               ),
               TextFormField(
+                controller: _pinController,
                 obscureText: _obscureText,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "Anda Harus Mengisinya";
-                  }
-                  return null;
-                },
+                cursorColor: Colors.white,
                 style: TextStyle(
                   color: Colors.white,
                 ),
                 decoration: InputDecoration(
+                  // labelText: 'enter your pin',
                   labelStyle: TextStyle(
                     color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w100,
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white),
@@ -94,8 +122,19 @@ class _PinPageState extends State<PinPage> {
               SizedBox(
                 height: 20,
               ),
+              Text(
+                _errorMessage,
+                style: TextStyle(
+                  color: Colors.red,
+                  fontSize: 14,
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed:
+                    _validatePin, // Panggil fungsi _validatePin saat tombol ditekan
                 child: Center(
                   child: Icon(
                     Remix.lock_unlock_line,
