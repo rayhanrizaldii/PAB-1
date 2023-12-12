@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:praktikum/FirstPage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:remixicon/remixicon.dart';
@@ -289,6 +290,38 @@ class _FourthPageState extends State<FourthPage> {
                         ),
                       ),
                     ],
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 20),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => FirstPage()),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    backgroundColor: Colors.green,
+                  ),
+                  child: Container(
+                    width: 200,
+                    height: 50,
+                    child: Center(
+                      child: const Text(
+                        'Keluar',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 2.5,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),

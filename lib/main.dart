@@ -4,7 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:praktikum/SplashScreen.dart';
 
-void main() {
+void main() async {
   runApp(const MaterialApp(
     debugShowCheckedModeBanner: false,
     home: SplashScreen(),

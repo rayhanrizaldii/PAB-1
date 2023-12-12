@@ -17,9 +17,7 @@ class _PinPageState extends State<PinPage> {
   Future<void> _validatePin() async {
     String pin = _pinController.text;
 
-    // Contoh validasi PIN dengan PIN yang ada di API
-    String apiPin = '1234'; // Ganti dengan PIN yang diperoleh dari API
-
+    String apiPin = '2001';
     if (pin == '') {
       _errorMessage = 'Masukkan Pin Anda';
     } else if (pin == apiPin) {
