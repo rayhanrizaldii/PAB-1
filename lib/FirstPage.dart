@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:praktikum/RegisterPage.dart';
-import 'package:praktikum/bottomnavigation.dart';
 import 'PinPage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
